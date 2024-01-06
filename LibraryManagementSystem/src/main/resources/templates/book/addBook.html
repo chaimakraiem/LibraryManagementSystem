@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <title>add</title>
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div class="container my-5">
+    <h3>Add Book</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-10">
+                <form th:action="@{/book/admin/submitBook}" method="post" enctype="multipart/form-data">
+                    <div class="row">
+
+                        <div class="form-group col-md-8">
+                            <label for="isbn" class="col-form-label">ISBN</label>
+                            <input type="text" th:value="${book.isbn}" class="form-control" id="isbn" name="isbn" placeholder="ISBN" />
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="title" class="col-form-label">Book Name</label>
+                            <input type="text" th:value="${book.title}" class="form-control" name="title" id="title" placeholder="Book Name" />
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="quantite" class="col-form-label">Quantite </label>
+                            <input type="number" th:value="${book.quantite}" class="form-control" id="quantite" placeholder="quantite" />
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="description" class="col-form-label">Description</label>
+                            <input type="text" th:field="${book.description}" class="form-control" id="description"name="description" placeholder="Description" />
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label  class="form-label">Image</label>
+                            <input type="file" accept="image/*" name="file">
+                            <input type="hidden"  name="image" th:value="${book.image}">
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label  class="col-form-label">Category</label>
+                            <select name="category" class="form-control" >
+                                    <option   th:each="c:${categories}"
+                                              th:text="${c.nomCat}"
+                                              th:value="${c.id}"
+                                              th:selected="${book.id!=null && book.category.id==c.id}">
+                                    </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label class="col-form-label">Author</label>
+                            <select name="author" class="form-control" >
+                                <option   th:each="a:${authors}"
+                                          th:text="${a.nomAuth}"
+                                          th:value="${a.id}"
+                                          th:selected="${book.id!=null && book.author.id==a.id}">
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <input type="hidden" name="id" th:value="${book.id}">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="fragments/footer :: footer"></div>
+
+<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

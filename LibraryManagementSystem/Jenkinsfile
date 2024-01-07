@@ -1,38 +1,28 @@
 pipeline {
-    agent any
-    triggers {
-        pollSCM('*/5 * * * *') // Vérifier toutes les 5 minutes
-    }
-    stages {
-        stage('Checkout') {
-            steps {
-                echo 'Récupération du code source'
-                checkout scm
-            }
-        }
+agent any
+triggers {
+pollSCM('*/5 * * * *') // Vérifier toutes les 5 minutes
+}
+stages {
+stage('Checkout') {
+steps {
+echo "Récupération du code source"
+checkout scm
+}
+}
+stage('Build') {
+steps {
+echo "Build du projet"
 
-        stage('Build') {
-            steps {
-                echo 'Construction de l\'application'
-                // Exemple : Maven Build
-                sh 'mvn clean install'
-            }
-        }
+// Ajoutez les commandes de build ici
 
-        stage('Test') {
-            steps {
-                echo 'Exécution des tests'
-                // Exemple : Maven Tests
-                sh 'mvn test'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Déploiement de l\'application'
-                // Exemple : Déploiement sur un serveur Tomcat
-                sh 'scp target/your-app.war user@server:/path/to/tomcat/webapps'
-            }
-        }
-    }
+}
+}
+stage('Deploy') {
+steps {
+echo "Déploiement du projet"
+// Ajoutez les commandes de déploiement ici
+}
+}
+}
 }

@@ -24,7 +24,7 @@ public class LibraryManagementSystemApplication{
         return args -> {
             accountService.addRole("ADMIN");
             accountService.addRole("USER");
-            accountService.addUser("user","12300258","user@gmail.com");
+            accountService.addUser("user","123","user@gmail.com");
             accountService.addUser("admin","1234","admin@gmail.com");
             accountService.addroleToUser("user","USER");
             accountService.addroleToUser("admin","ADMIN");

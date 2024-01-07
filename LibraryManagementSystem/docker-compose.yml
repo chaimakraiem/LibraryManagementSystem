@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  dotnet-app:
+    image: chaimakraiem/library-app
+    ports:
+      - "1010:80"
+    volumes:
+      - ./gestionBook.db:/app/gestionBook.db
+    depends_on:
+      - db
+    environment:
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: gestionBook
+      MYSQL_USER: root
+      MYSQL_PASSWORD: your_mysql_password  # Remplacez "your_mysql_password" par le mot de passe que vous souhaitez utiliser
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gestionBook
+      MYSQL_USER: root
+      MYSQL_PASSWORD: your_mysql_password  # Remplacez "your_mysql_password" par le mot de passe que vous souhaitez utiliser

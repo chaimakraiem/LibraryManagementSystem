@@ -1,25 +1,25 @@
   apiVersion: apps/v1
   kind: Deployment
   metadata:
-    name: rancher-demo
+    name: LibraryManagementSystem
     labels:
-      app: rancher-demo
+      app: LibraryManagementSystem
   spec:
     selector:
       matchLabels:
-        app: rancher-demo
+        app: LibraryManagementSystem
     strategy:
       type: Recreate
     replicas: 1
     template:
       metadata:
         labels:
-          app: rancher-demo
+          app: LibraryManagementSystem
       spec:
         containers:
-        - image: <image>
-          name: <name>
+        - image: chaimakraiem/library-app
+          name: LibraryManagementSystem
           ports:
-          - containerPort: <port>
-            name: demo-http
+          - containerPort: 80
+            name: http
 

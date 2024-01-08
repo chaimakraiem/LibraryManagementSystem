@@ -6,8 +6,8 @@
       app: lib
   spec:
     ports:
-      - port: 1010
+      - port: 80
     selector:
-      app: 
+      app: lib-pod.yaml
     type: NodePort
 

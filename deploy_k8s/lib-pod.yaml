@@ -1,24 +1,24 @@
   apiVersion: apps/v1
   kind: Deployment
   metadata:
-    name: LibraryManagementSystem
+    name: librarymanagementsystem
     labels:
-      app: LibraryManagementSystem
+      app: librarymanagementsystem
   spec:
     selector:
       matchLabels:
-        app: LibraryManagementSystem
+        app: librarymanagementsystem
     strategy:
       type: Recreate
     replicas: 1
     template:
       metadata:
         labels:
-          app: LibraryManagementSystem
+          app: librarymanagementsystem
       spec:
         containers:
         - image: chaimakraiem/library-app
-          name: LibraryManagementSystem
+          name: librarymanagementsystem
           ports:
           - containerPort: 80
             name: http

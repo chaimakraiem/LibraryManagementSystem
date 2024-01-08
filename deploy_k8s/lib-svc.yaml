@@ -1,13 +1,13 @@
   apiVersion: v1
   kind: Service
   metadata:
-    name: rancher-demo-service
+    name: lib-service
     labels:
-      app: rancher-demo
+      app: lib
   spec:
     ports:
-      - port: <port>
+      - port: 1010
     selector:
-      app: <app_selector> 
+      app: 
     type: NodePort
 
